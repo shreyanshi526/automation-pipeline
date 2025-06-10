@@ -1,6 +1,6 @@
 import { createNode } from "../components/BaseNode";
 
-// Helper function to create common node configurations
+// creating mutiple node 
 export const nodeTemplates = {
     textProcessor: (title, icon) => createNode({
         nodeType: "textProcessor",
@@ -89,6 +89,9 @@ export const nodeTemplates = {
         nodeType: "userForm",
         title,
         icon,
+        titleClassName: "bg-gradient-to-r from-red-500 to-red-700 text-white font-bold text-base",
+        inputClassName: "focus:ring-red-500",
+        className: "bg-red-100 shadow-lg shadow-red-300/50",
         fields: [
             {
                 key: "name",
@@ -131,6 +134,9 @@ export const nodeTemplates = {
         nodeType: "dataProcessor",
         title,
         icon,
+        titleClassName: "bg-gradient-to-r from-pink-400 to-pink-600 text-white font-bold text-base",
+        inputClassName: "focus:ring-pink-500",
+        className: "bg-pink-100 shadow-lg shadow-pink-300/50",
         fields: [
             {
                 key: "inputData",
@@ -165,6 +171,9 @@ export const nodeTemplates = {
         nodeType: "scheduler",
         title,
         icon,
+        titleClassName: "bg-gradient-to-r from-purple-300 to-purple-500 text-white font-bold text-base",
+        inputClassName: "focus:ring-pink-500",
+        className: "bg-purple-100 shadow-lg shadow-purple-300/50",
         fields: [
             {
                 key: "startDate",
@@ -197,6 +206,9 @@ export const nodeTemplates = {
         nodeType: "fileUpload",
         title,
         icon,
+        titleClassName: "bg-gradient-to-r from-gray-500 to-gray-600 text-white font-bold text-base",
+        inputClassName: "focus:ring-teal-500",
+        className: "bg-gray-100 shadow-lg shadow-gray-300/50",
         fields: [
             {
                 key: "file",

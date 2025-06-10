@@ -11,7 +11,7 @@ import { ValidatorNode } from '../nodes/ValidatorNode';
 import { TransformerNode } from '../nodes/TransformerNode';
 import { nodeTemplates } from '../nodes/MultipleNodes';
 import 'reactflow/dist/style.css';
-import { FaBook, FaCalculator, FaStar } from 'react-icons/fa';
+import { FaBook, FaStar, FaCalculator, FaUserEdit, FaCog, FaCalendarAlt } from "react-icons/fa";
 import { parsePipeline } from '../API/pipeLineSubmitAPI';
 import CustomModal from '../components/Modal';
 
@@ -24,9 +24,13 @@ const nodeTypes = {
   text: TextNode,
   transformerNode: TransformerNode,
   validatorNode: ValidatorNode,
+  fileUpload: nodeTemplates.fileUpload("File Upload", <FaBook />),
   textProcessor: nodeTemplates.textProcessor("Text", <FaStar />),
   apiCall: nodeTemplates.apiCall("Call API", <FaBook />),
-  condition: nodeTemplates.condition("Condition", <FaCalculator />)
+  condition: nodeTemplates.condition("Condition", <FaCalculator />),
+  userForm: nodeTemplates.userForm("User Form", <FaUserEdit />),
+  dataProcessor: nodeTemplates.dataProcessor("Data Processor", <FaCog />),
+  scheduler: nodeTemplates.scheduler("Scheduler", <FaCalendarAlt />)
 };
 
 const selector = (state) => ({
@@ -98,6 +102,7 @@ export const PipelineUI = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [dagResult, setDagResult] = useState(null);
 
+  // submit button
   const handleSubmitPipeline = () => {
     const pipeline = { nodes, edges };
 
@@ -114,10 +119,13 @@ export const PipelineUI = () => {
             is_dag,
           });
         } else {
-          // Error case: cycle detected
+          // Error case: cycle detected, but still send counts
           setDagResult({
             type: 'error',
             message: 'You have a cycle in your workflow. Please fix it and try again.',
+            num_nodes,
+            num_edges,
+            is_dag,
           });
         }
         setModalOpen(true);

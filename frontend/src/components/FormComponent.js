@@ -55,14 +55,12 @@ export const AutoResizeTextarea = ({
   // Highlight {{variable}} with a span
   const getHighlightedText = (text) => {
     if (!text) return "";
-    // Escape HTML special chars
     const escapeHtml = (str) =>
       str.replace(/&/g, "&amp;")
          .replace(/</g, "&lt;")
          .replace(/>/g, "&gt;")
          .replace(/"/g, "&quot;")
          .replace(/'/g, "&#039;");
-    // Replace {{variable}} with highlighted span
     return escapeHtml(text).replace(
       /(\{\{.*?\}\})/g,
       '<span style="background: #fff9c4;">$1</span>'

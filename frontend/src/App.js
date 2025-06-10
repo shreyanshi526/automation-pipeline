@@ -11,7 +11,6 @@ function App() {
         <PipelineToolbar />
         <PipelineUI />
       </main>
-
     </div>
   );
 }
